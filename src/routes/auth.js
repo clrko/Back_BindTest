@@ -22,11 +22,11 @@ Router.post("/login",(req, res) => {
     connection.query(sql, values, (err, result) => {
         if (err) throw err;
         if (result == false) {
-            return res.status(200).send("The password or username is wrong"); /* explorer les status pour prendre celui qui correspond sont bons */
+            return res.status(200).send("The password or username is wrong"); /* mettre à jour le status */
         } else {
             const tokenUserInfo = {
-                username: req.body.username, /* a recuperer de la base de donnée */
-                status: "chicken lord" /* a recuperer de la base de donnée */
+                username: req.body.username, 
+                status: "connected" /* A recuperer de la base de donnée */
             }
             const token = jwt.sign(tokenUserInfo, jwtSecret)
             res.header("Access-Control-Expose-Headers", "x-access-token")
