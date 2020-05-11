@@ -22,11 +22,9 @@ Router.post("/login",(req, res) => {
         status : "Chicken Lord"
     } 
     const token = jwt.sign(tokenUserInfo,jwtSecret)
-    console.log("voici le token", token)
-    /* res.header("Access-Control-Expose-Headers" , "x-acess-token")
-    res.set('x-acess-token', token) */
+    res.header("Access-Control-Expose-Headers" , "x-access-token")
+    res.set('x-access-token', token)
     res.status(200).send('user connected')
-
 }
 })
 
