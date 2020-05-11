@@ -3,6 +3,7 @@ const cors = require("cors")
 const morgan = require("morgan")
 
 const auth = require("./src/routes/auth")
+const connection = require("./src/helper/db.js")
 
 const app = express()
 
