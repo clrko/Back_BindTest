@@ -1,11 +1,16 @@
 const express = require("express")
 const morgan = require("morgan")
 
+const auth = require("./src/routes/auth")
+
 const app = express()
 
 app.use(morgan("dev")) /* voir la doc */
 app.use(express.json()) /* for parsing application/json */
 app.use(express.urlencoded({extended: true})) /* for parsing application/x-www-formurlencoded */
+
+
+app.use("/auth", auth)
 
 app.get("/", (req, res) => {
     res.send("je suis dans le /")
