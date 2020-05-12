@@ -3,6 +3,7 @@ const cors = require("cors")
 const morgan = require("morgan")
 
 const auth = require("./src/routes/auth")
+const favorite = require("./src/routes/favorite")
 const connection = require("./src/helper/db.js")
 
 const app = express()
@@ -13,6 +14,7 @@ app.use(express.json()) /* for parsing application/json */
 app.use(express.urlencoded({extended: true})) /* for parsing application/x-www-formurlencoded */
 
 app.use("/auth", auth)
+app.use("/favorite", favorite)
 
 app.get("/", (req, res) => {
     res.send("je suis dans le /")
