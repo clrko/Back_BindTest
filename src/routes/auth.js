@@ -13,10 +13,9 @@ Router.get("/", (req, res) => {
 Router.post("/login",(req, res) => {
     console.log("req.body", req.body)
 
-    const sql = "SELECT id, username FROM users WHERE username = ? AND password = ?"
+    const sql = "SELECT id, username, password FROM users WHERE username = ?"
     const values = [
-        req.body.username,
-        req.body.password
+        req.body.username
     ]
 
     connection.query(sql, values, (err, result) => {
@@ -24,6 +23,12 @@ Router.post("/login",(req, res) => {
         if (!result) {
             return res.status(200).send("The password or username is wrong"); /* TODO explorer les status pour prendre celui qui correspond sont bons */
         } else {
+           /*  bcrypt.compare(req.body.password, result[]de la DB, function(err, result) {
+                // result == true
+            });
+
+            if  */
+
             console.log(result)
             const tokenUserInfo = {
                 id: result[0].id,
