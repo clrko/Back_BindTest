@@ -4,6 +4,8 @@ const morgan = require("morgan")
 
 const auth = require("./src/routes/auth")
 const connection = require("./src/helper/db.js")
+const favorite = require("./src/routes/favorite")
+const register = require("./src/routes/register")
 
 const app = express()
 
@@ -13,6 +15,8 @@ app.use(express.json()) /* for parsing application/json */
 app.use(express.urlencoded({extended: true})) /* for parsing application/x-www-formurlencoded */
 
 app.use("/auth", auth)
+app.use("/favorite", favorite)
+app.use("/register", register)
 
 app.get("/", (req, res) => {
     res.send("je suis dans le /")
