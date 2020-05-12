@@ -27,6 +27,21 @@ Router.get("/standard/:genre", (req, res) => {
     })
 })
 
+Router.put("/updateScore/:id", (req, res) => {
+    console.log("body", req.body)
+    console.log("params", req.params)
+    const id = req.params.id
+    const sql = `UPDATE score SET score = ? WHERE id = ?`
+    const values = [
+        req.body.score,
+        id
+    ]
+    connection.query(sql, values, (err, result) => {
+        if (err) throw err
+        return res.status(200).send(result)
+    })
+})
+
 Router.post("/addScore", (req, res) => {
     console.log("req.body", req.body)
     const sql = "INSERT INTO score (username, score, genre) VALUES (?,?,?)"
