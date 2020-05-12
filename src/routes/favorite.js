@@ -8,14 +8,30 @@ const Router = express.Router()
 
 
 Router.get("/", (req, res) => {
-    res.send("je suis dans la route /favorite")
+
+    console.log("req headers est ", req.headers['x-access-token'])
+
+    const token = req.headers['x-access-token']
+    const tokenData = jwt.verify(token, jwtSecret, (err, decoded) => {
+        if (err) throw err;
+
+        const sql = "SELECT (track_id) FROM favorite WHERE user_id = ?"
+        const values = [decoded.id]
+        console.log("values are", values)
+        connection.query(sql, values, (err, result) => {
+            if (err) throw err;
+            console.log("the result is", result)
+            return res.status(200).send(result);
+        })
+        
+    })
 })
 
 Router.post("/tracks", (req, res) => {
-    console.log("req.body", req.body) /* dans le body il faudra mettre les informations, chansons, score etc. */
+    console.log("req.body", req.body) 
     console.log("headers", req.headers)
     
-    const token = req.headers['x-access-token'] /* Puré revoir le cours - les tirets ou espaces ne marchent pas donc il faut utiliser la synthaxe avec les [] et '' */
+    const token = req.headers['x-access-token'] 
     console.log("token est", token)
     
     const tokenData = jwt.verify(token, jwtSecret, (err, decoded) => {
