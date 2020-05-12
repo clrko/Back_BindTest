@@ -1,5 +1,5 @@
 const express = require("express")
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt')
 
 const connection = require("../helper/db.js")
 
