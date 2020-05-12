@@ -36,17 +36,38 @@ Router.post("/tracks", (req, res) => {
     
     const tokenData = jwt.verify(token, jwtSecret, (err, decoded) => {
         if (err) throw err;
-        const sql = "INSERT INTO favorite (user_id, track_id) VALUES (?, ?)"
+
+        const sql = "SELECT (track_id) FROM users WHERE user_id = ?"
         const values = [
-            decoded.id,
-            req.body.track_id,
+            req.body.username,
         ]
-        console.log("values are", values)
         connection.query(sql, values, (err, result) => {
             if (err) throw err;
-            return res.status(200).send("Added to favorite");
+
+            if (result.length === 0 ) {
+                const sql = "INSERT INTO favorite (user_id, track_id) VALUES (?, ?)"
+                const values = [
+                    decoded.id,
+                    req.body.track_id,
+                ]
+                console.log("values are", values)
+                connection.query(sql, values, (err, result) => {
+                    if (err) throw err;
+                    return res.status(200).send("Added to favorite");
+                })
+            } else {
+                const sql = "DELETE FROM favorite WHERE id = ? AND track_id = ?"
+                const values = [
+                    decoded.id,
+                    req.body.track_id,
+                ]
+                console.log("values are", values)
+                connection.query(sql, values, (err, result) => {
+                    if (err) throw err;
+                    return res.status(200).send("Removed favorite")
+                })
+            }
         })
-        
     })
     console.log("user data token", tokenData)
 })
