@@ -9,28 +9,21 @@ const Router = express.Router()
 
 Router.get("/", (req, res) => {
 
-    console.log("req headers est ", req.headers['x-access-token'])
-
     const token = req.headers['x-access-token']
     const tokenData = jwt.verify(token, jwtSecret, (err, decoded) => {
         if (err) throw err;
-
         const sql = "SELECT (track_id) FROM favorite WHERE user_id = ?"
         const values = [decoded.id]
-        console.log("values are", values)
+        
         connection.query(sql, values, (err, result) => {
             if (err) throw err;
-            console.log("the result is", result)
             return res.status(200).send(result);
         })
-        
     })
 })
 
 Router.post("/tracks", (req, res) => {
-    console.log("req.body", req.body) 
-    console.log("headers", req.headers)
-    
+
     const token = req.headers['x-access-token'] 
     const tokenData = jwt.verify(token, jwtSecret, (err, decoded) => {
         if (err) throw err;
@@ -40,10 +33,9 @@ Router.post("/tracks", (req, res) => {
             decoded.id,
             req.body.track_id,
         ]
-        console.log("values are", values)
         connection.query(sql, values, (err, result) => {
             if (err) throw err;
-            return res.status(200).send("Added to favorite");
+            return res.status(200).send("Successfully added to favorite");
         })
     })
 })
@@ -51,9 +43,7 @@ Router.post("/tracks", (req, res) => {
 
 Router.delete("/tracks/:track_id", (req, res) => {
     const token = req.headers['x-access-token'] 
-    
-    console.log("headers", req.headers)
-    console.log("req.params.track_id", req.params.track_id)
+
     const tokenData = jwt.verify(token, jwtSecret, (err, decoded) => {
         if (err) throw err;
 
@@ -66,10 +56,9 @@ Router.delete("/tracks/:track_id", (req, res) => {
             if (err) throw err;
             const sql2 = "SELECT (track_id) FROM favorite WHERE user_id = ?"
             const values = [decoded.id]
-            console.log("values are", values)
+            
             connection.query(sql2, values, (err, result) => {
                 if (err) throw err;
-                console.log("the result is", result)
                 return res.status(200).send(result);
             })
         })     
