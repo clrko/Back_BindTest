@@ -10,7 +10,6 @@ Router.get("/", (req, res) => {
 })
 
 Router.post("/new_user", (req, res) => {
-    console.log("req.body", req.body)
 
     const sql = "SELECT (username) FROM users WHERE username = ?"
     const values = [
@@ -31,7 +30,6 @@ Router.post("/new_user", (req, res) => {
                         req.body.username,
                         hash
                     ]
-                    console.log("the values are", values)
                     connection.query(sql, values, (err, result) => {
                         if (err) throw err;
                         return res.status(201).send("Registration")
