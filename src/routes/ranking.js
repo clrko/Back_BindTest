@@ -1,6 +1,8 @@
 const express = require("express")
+const jwt = require("jsonwebtoken")
 
 const connection = require("../helper/db.js")
+const jwtSecret = require("../../jwtSecret.js")
 
 const Router = express.Router()
 
@@ -44,15 +46,21 @@ Router.put("/updateScore/:id", (req, res) => {
 
 Router.post("/addScore", (req, res) => {
     console.log("req.body", req.body)
-    const sql = "INSERT INTO score (username, score, genre) VALUES (?,?,?)"
-    const values = [
-        req.body.username,
-        req.body.score,
-        req.body.genre,
-    ]
-    connection.query(sql, values, (err, result) => {
-        if (err) throw err
-        return res.status(200).send(result)
+
+    const token = req.headers['x-access-token']
+    const tokenData = jwt.verify(token, jwtSecret, (err, decoded) => {
+        if (err) throw err;
+        const sql = "INSERT INTO score (user_id, username, score, genre) VALUES (?,?,?,?)"
+        const values = [
+            decoded.id,
+            req.body.username,
+            req.body.score,
+            req.body.genre,
+        ]
+        connection.query(sql, values, (err, result) => {
+            if (err) throw err
+            return res.status(200).send(result)
+        })
     })
 })
 
