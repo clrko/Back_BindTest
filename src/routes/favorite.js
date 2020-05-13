@@ -8,31 +8,62 @@ const Router = express.Router()
 
 
 Router.get("/", (req, res) => {
-    res.send("je suis dans la route /favorite")
+
+    const token = req.headers['x-access-token']
+    const tokenData = jwt.verify(token, jwtSecret, (err, decoded) => {
+        if (err) throw err;
+        const sql = "SELECT (track_id) FROM favorite WHERE user_id = ?"
+        const values = [decoded.id]
+        
+        connection.query(sql, values, (err, result) => {
+            if (err) throw err;
+            return res.status(200).send(result);
+        })
+    })
 })
 
 Router.post("/tracks", (req, res) => {
-    console.log("req.body", req.body) /* dans le body il faudra mettre les informations, chansons, score etc. */
-    console.log("headers", req.headers)
-    
-    const token = req.headers['x-access-token'] /* Puré revoir le cours - les tirets ou espaces ne marchent pas donc il faut utiliser la synthaxe avec les [] et '' */
-    console.log("token est", token)
-    
+
+    const token = req.headers['x-access-token'] 
     const tokenData = jwt.verify(token, jwtSecret, (err, decoded) => {
         if (err) throw err;
+
         const sql = "INSERT INTO favorite (user_id, track_id) VALUES (?, ?)"
         const values = [
             decoded.id,
             req.body.track_id,
         ]
-        console.log("values are", values)
         connection.query(sql, values, (err, result) => {
             if (err) throw err;
-            return res.status(200).send("Added to favorite");
+            return res.status(200).send("Successfully added to favorite");
         })
-        
     })
-    console.log("user data token", tokenData)
 })
+
+
+Router.delete("/tracks/:track_id", (req, res) => {
+    const token = req.headers['x-access-token'] 
+
+    const tokenData = jwt.verify(token, jwtSecret, (err, decoded) => {
+        if (err) throw err;
+
+        const sql = "DELETE FROM favorite WHERE user_id = ? AND track_id = ?"
+        const values = [
+            decoded.id,
+            req.params.track_id
+        ]
+        connection.query(sql, values, (err, result) => {
+            if (err) throw err;
+            const sql2 = "SELECT (track_id) FROM favorite WHERE user_id = ?"
+            const values = [decoded.id]
+            
+            connection.query(sql2, values, (err, result) => {
+                if (err) throw err;
+                return res.status(200).send(result);
+            })
+        })     
+    })
+})
+
 
 module.exports = Router
