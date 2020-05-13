@@ -48,19 +48,19 @@ Router.post("/tracks", (req, res) => {
     })
 })
 
-/* ou delete */
-Router.put("/tracks", (req, res) => {
-    const token = req.headers['x-access-token'] 
 
-    console.log("req.data", req.data) 
+Router.delete("/tracks/:track_id", (req, res) => {
+    const token = req.headers['x-access-token'] 
+    
     console.log("headers", req.headers)
+    console.log("req.params.track_id", req.params.track_id)
     const tokenData = jwt.verify(token, jwtSecret, (err, decoded) => {
         if (err) throw err;
 
-        const sql = "DELETE FROM favorite WHERE id = ? AND track_id = ?"
+        const sql = "DELETE FROM favorite WHERE user_id = ? AND track_id = ?"
         const values = [
             decoded.id,
-            req.data.track_id,
+            req.params.track_id
         ]
         connection.query(sql, values, (err, result) => {
             if (err) throw err;
