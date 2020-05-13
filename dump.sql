@@ -27,7 +27,7 @@ CREATE TABLE `favorite` (
   `user_id` int NOT NULL,
   `track_id` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +36,7 @@ CREATE TABLE `favorite` (
 
 LOCK TABLES `favorite` WRITE;
 /*!40000 ALTER TABLE `favorite` DISABLE KEYS */;
-INSERT INTO `favorite` VALUES (1,3,'tra.42030192'),(2,3,'tra.146138920'),(3,3,'tra.41005642'),(4,3,'tra.61509649'),(5,14,'tra.2020416'),(6,14,'tra.7237755'),(7,14,'tra.263946249'),(8,14,'tra.63778603'),(9,14,'tra.364895051'),(10,14,'tra.198280571');
+INSERT INTO `favorite` VALUES (1,3,'tra.42030192'),(2,3,'tra.146138920'),(3,3,'tra.41005642'),(4,3,'tra.61509649'),(20,14,'tra.251260402'),(21,14,'tra.283060810'),(22,14,'tra.283060810'),(23,14,'tra.283060810'),(24,14,'tra.283060810'),(27,14,'tra.2020413'),(28,14,'tra.179601368'),(29,14,'tra.69423225'),(30,14,'tra.51806487'),(31,14,'tra.264525109'),(32,14,'tra.1919316'),(34,14,'tra.151869968'),(35,14,'tra.113160350'),(36,14,'tra.190834610');
 /*!40000 ALTER TABLE `favorite` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -98,4 +98,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-12 21:53:26
+-- Dump completed on 2020-05-13 18:29:05
