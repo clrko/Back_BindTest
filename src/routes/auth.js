@@ -8,7 +8,17 @@ const jwtSecret = require("../../jwtSecret.js")
 const Router = express.Router()
 
 Router.get("/", (req, res) => {
-    res.send("je suis dans la route /auth")
+    const token = req.headers['x-access-token']
+    const tokenData = jwt.verify(token, jwtSecret, (err, decoded) => {
+        if (err) throw err
+        const sql = "SELECT (username) FROM users WHERE id = ?"
+        const values = [decoded.id]
+        
+        connection.query(sql, values, (err, result) => {
+            if (err) throw err
+            return res.status(200).send(result)
+        })
+    })
 })
 
 Router.post("/login",(req, res) => {
