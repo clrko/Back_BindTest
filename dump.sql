@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.20, for macos10.15 (x86_64)
 --
--- Host: 127.0.0.1    Database: ThunderDatabase
+-- Host: localhost    Database: ThunderDatabase
 -- ------------------------------------------------------
 -- Server version	8.0.19
 
@@ -23,10 +23,11 @@ DROP TABLE IF EXISTS `favorite`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `favorite` (
-  `username` int NOT NULL,
-  `favoriteTracks` longtext,
-  PRIMARY KEY (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `track_id` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,6 +36,7 @@ CREATE TABLE `favorite` (
 
 LOCK TABLES `favorite` WRITE;
 /*!40000 ALTER TABLE `favorite` DISABLE KEYS */;
+INSERT INTO `favorite` VALUES (1,3,'tra.42030192'),(2,3,'tra.146138920'),(3,3,'tra.41005642'),(4,3,'tra.61509649'),(20,14,'tra.251260402'),(21,14,'tra.283060810'),(22,14,'tra.283060810'),(23,14,'tra.283060810'),(24,14,'tra.283060810'),(27,14,'tra.2020413'),(28,14,'tra.179601368'),(29,14,'tra.69423225'),(30,14,'tra.51806487'),(31,14,'tra.264525109'),(32,14,'tra.1919316'),(34,14,'tra.151869968'),(35,14,'tra.113160350'),(36,14,'tra.190834610');
 /*!40000 ALTER TABLE `favorite` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -46,9 +48,9 @@ DROP TABLE IF EXISTS `score`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `score` (
-  `username` int NOT NULL,
-  `score` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`username`)
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -71,10 +73,10 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(16) NOT NULL,
-  `password` varchar(32) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -83,7 +85,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'pinto','coco','2020-05-11 14:48:41'),(2,'seb','toto','2020-05-11 14:48:41'),(3,'clrko','roro','2020-05-11 14:48:41');
+INSERT INTO `users` VALUES (1,'pinto','coco','2020-05-11 14:48:41'),(2,'seb','toto','2020-05-11 14:48:41'),(3,'clrko','roro','2020-05-11 14:48:41'),(4,'test','$2b$10$a2cN5p.UKg/rBtfrTVMx9esxoj8q/9kfk26o1quJqBHenYUuqtaEy','2020-05-12 12:29:30'),(5,'test1','$2b$10$0jKxtoj4kMsG7WYkO7Uev.V4hqf/NfuSn6vNUsKp3U7Y5h0jovuQi','2020-05-12 12:33:10'),(6,'test3','$2b$10$dC67hTP3fck8KDvtHEF/2uOf3z3Z.9FmGALoBMFDWrxoHF4XvQpWK','2020-05-12 12:37:51'),(7,'test3','$2b$10$rWusQ7WQifF3MfGjasIp1.86rrcV8do0GkGPbsFyKmU9N6lGMfQK.','2020-05-12 12:39:18'),(8,'clrko','$2b$10$d7U7IetAvm.m5JUkVMAP6ueNIIvA9UwX3Ch3NKwrpVMzk.1aOMc3C','2020-05-12 12:42:38'),(9,'clrko','$2b$10$x15eV.axTKQwr0pesOWa6OthaluPXoRwhwrg7.1x3VcFgDujkphsq','2020-05-12 12:43:04'),(10,'clrko','$2b$10$.UREVRGTzvBO9f0Fa7Oz8.zLdcqaSsjh.6V8LF.jot93U5j7FPpCm','2020-05-12 12:43:18'),(11,'clrko','$2b$10$X60uO8gqtRb/s2vaIXg3x.IyXacSG4A8oBvlD.HGzjQdsMgvx/ASy','2020-05-12 12:43:50'),(12,'clrko','$2b$10$.bOX55XkoBq29WgSvgdCsu/6YERrJauE.yNNU5LdJpDoXy2ohwd2a','2020-05-12 12:44:11'),(13,'erfger','$2b$10$DYsP7To710hddQXFJDGmFOmrU/TnbRRvaJUeWfnmn1FoH8jPBXNc2','2020-05-12 12:44:39'),(14,'titi','$2b$10$bNmxIm0syD5b.hz8EDidsucYC6A2WEMbUItchN9Q7iSA4z.j6c5sm','2020-05-12 13:24:42'),(15,'tutu','$2b$10$Q8ZGS36g.bRzbK2DuUvX0.10kTr0/xAKqrY3Hy6nZ1VZ1eikmH2de','2020-05-12 13:30:19');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -96,4 +98,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-11 18:32:06
+-- Dump completed on 2020-05-13 18:29:05
