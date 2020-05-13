@@ -64,7 +64,14 @@ Router.delete("/tracks/:track_id", (req, res) => {
         ]
         connection.query(sql, values, (err, result) => {
             if (err) throw err;
-            return res.status(200).send("Removed favorite")
+            const sql2 = "SELECT (track_id) FROM favorite WHERE user_id = ?"
+            const values = [decoded.id]
+            console.log("values are", values)
+            connection.query(sql2, values, (err, result) => {
+                if (err) throw err;
+                console.log("the result is", result)
+                return res.status(200).send(result);
+            })
         })     
     })
 })
