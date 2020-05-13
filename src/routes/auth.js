@@ -11,7 +11,7 @@ Router.get("/", (req, res) => {
     const token = req.headers['x-access-token']
     const tokenData = jwt.verify(token, jwtSecret, (err, decoded) => {
         if (err) throw err
-        const sql = "SELECT (username) FROM users WHERE user_id = ?"
+        const sql = "SELECT (username) FROM users WHERE id = ?"
         const values = [decoded.id]
         
         connection.query(sql, values, (err, result) => {
