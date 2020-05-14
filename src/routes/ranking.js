@@ -10,6 +10,19 @@ Router.get("/", (req, res) => {
     res.send("je suis dans la route /ranking")
 })
 
+Router.get("/allscores", (req, res) => {
+    const token = req.headers['x-access-token']
+    const tokenData = jwt.verify(token, jwtSecret, (err, decoded) => {
+        if (err) throw err;
+        const sql = "SELECT id, username, score, genre FROM score WHERE user_id = ?"
+        const values = [decoded.id]
+        connection.query(sql, values, (err, result) => {
+            if (err) throw err;
+            return res.status(200).send(result);
+        })
+    })
+})
+
 Router.get("/standard", (req, res) => {
     const sql = "SELECT * FROM score"
     connection.query(sql, (err, result) => {
