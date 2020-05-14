@@ -14,7 +14,7 @@ Router.get("/allscores", (req, res) => {
     const token = req.headers['x-access-token']
     const tokenData = jwt.verify(token, jwtSecret, (err, decoded) => {
         if (err) throw err;
-        const sql = "SELECT (id, username, score, genre) FROM score WHERE user_id = ?"
+        const sql = "SELECT id, username, score, genre FROM score WHERE user_id = ?"
         const values = [decoded.id]
         connection.query(sql, values, (err, result) => {
             if (err) throw err;
