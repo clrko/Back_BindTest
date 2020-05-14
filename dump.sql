@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 8.0.20, for macos10.15 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.30, for Linux (x86_64)
 --
 -- Host: localhost    Database: ThunderDatabase
 -- ------------------------------------------------------
--- Server version	8.0.19
+-- Server version	5.7.30-0ubuntu0.18.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -21,13 +21,13 @@
 
 DROP TABLE IF EXISTS `favorite`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `favorite` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
   `track_id` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +36,6 @@ CREATE TABLE `favorite` (
 
 LOCK TABLES `favorite` WRITE;
 /*!40000 ALTER TABLE `favorite` DISABLE KEYS */;
-INSERT INTO `favorite` VALUES (1,3,'tra.42030192'),(2,3,'tra.146138920'),(3,3,'tra.41005642'),(4,3,'tra.61509649'),(20,14,'tra.251260402'),(21,14,'tra.283060810'),(22,14,'tra.283060810'),(23,14,'tra.283060810'),(24,14,'tra.283060810'),(27,14,'tra.2020413'),(28,14,'tra.179601368'),(29,14,'tra.69423225'),(30,14,'tra.51806487'),(31,14,'tra.264525109'),(32,14,'tra.1919316'),(34,14,'tra.151869968'),(35,14,'tra.113160350'),(36,14,'tra.190834610'),(38,15,'tra.113160000'),(39,15,'tra.209392309'),(40,15,'tra.2011077'),(41,15,'tra.190834602'),(42,15,'tra.38874180'),(43,15,'tra.470803074');
 /*!40000 ALTER TABLE `favorite` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -46,15 +45,15 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `score`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `score` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
   `username` varchar(45) DEFAULT NULL,
-  `score` int DEFAULT NULL,
+  `score` int(11) DEFAULT NULL,
   `genre` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=244 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,32 +62,8 @@ CREATE TABLE `score` (
 
 LOCK TABLES `score` WRITE;
 /*!40000 ALTER TABLE `score` DISABLE KEYS */;
-INSERT INTO `score` VALUES (1,14,'titi',47,'Pop'),(2,15,'tutu',96,'Rock'),(3,15,'tutu',69,'Survival'),(4,15,'tutu',24,'Children');
+INSERT INTO `score` VALUES (1,1,'Aristide',92,'Pop'),(2,2,'Celine',108,'Pop'),(3,3,'Emily',125,'Pop'),(4,4,'Florent',18,'Pop'),(5,5,'Jerome',144,'Pop'),(6,6,'Johnny',140,'Pop'),(7,7,'Juba',87,'Pop'),(8,8,'Mamed',38,'Pop'),(9,9,'Paracelse',94,'Pop'),(10,10,'Tristan',54,'Pop'),(11,11,'Yasmine',71,'Pop'),(12,1,'Aristide',19,'Rock'),(13,2,'Celine',88,'Rock'),(14,3,'Emily',43,'Rock'),(15,4,'Florent',47,'Rock'),(16,5,'Jerome',104,'Rock'),(17,6,'Johnny',73,'Rock'),(18,7,'Juba',108,'Rock'),(19,8,'Mamed',146,'Rock'),(20,9,'Paracelse',74,'Rock'),(21,10,'Tristan',29,'Rock'),(22,11,'Yasmine',148,'Rock'),(23,1,'Aristide',1,'Alternative'),(24,2,'Celine',61,'Alternative'),(25,3,'Emily',66,'Alternative'),(26,4,'Florent',141,'Alternative'),(27,5,'Jerome',38,'Alternative'),(28,6,'Johnny',29,'Alternative'),(29,7,'Juba',92,'Alternative'),(30,8,'Mamed',15,'Alternative'),(31,9,'Paracelse',58,'Alternative'),(32,10,'Tristan',25,'Alternative'),(33,11,'Yasmine',145,'Alternative'),(34,1,'Aristide',7,'Rap/Hip-Hop'),(35,2,'Celine',17,'Rap/Hip-Hop'),(36,3,'Emily',89,'Rap/Hip-Hop'),(37,4,'Florent',111,'Rap/Hip-Hop'),(38,5,'Jerome',146,'Rap/Hip-Hop'),(39,6,'Johnny',84,'Rap/Hip-Hop'),(40,7,'Juba',21,'Rap/Hip-Hop'),(41,8,'Mamed',111,'Rap/Hip-Hop'),(42,9,'Paracelse',104,'Rap/Hip-Hop'),(43,10,'Tristan',130,'Rap/Hip-Hop'),(44,11,'Yasmine',43,'Rap/Hip-Hop'),(45,1,'Aristide',56,'Soul/R&B'),(46,2,'Celine',13,'Soul/R&B'),(47,3,'Emily',112,'Soul/R&B'),(48,4,'Florent',147,'Soul/R&B'),(49,5,'Jerome',31,'Soul/R&B'),(50,6,'Johnny',84,'Soul/R&B'),(51,7,'Juba',129,'Soul/R&B'),(52,8,'Mamed',36,'Soul/R&B'),(53,9,'Paracelse',87,'Soul/R&B'),(54,10,'Tristan',66,'Soul/R&B'),(55,11,'Yasmine',131,'Soul/R&B'),(56,1,'Aristide',93,'Country'),(57,2,'Celine',53,'Country'),(58,3,'Emily',120,'Country'),(59,4,'Florent',99,'Country'),(60,5,'Jerome',30,'Country'),(61,6,'Johnny',69,'Country'),(62,7,'Juba',62,'Country'),(63,8,'Mamed',26,'Country'),(64,9,'Paracelse',3,'Country'),(65,10,'Tristan',73,'Country'),(66,11,'Yasmine',22,'Country'),(67,1,'Aristide',137,'Jazz'),(68,2,'Celine',108,'Jazz'),(69,3,'Emily',120,'Jazz'),(70,4,'Florent',71,'Jazz'),(71,5,'Jerome',42,'Jazz'),(72,6,'Johnny',105,'Jazz'),(73,7,'Juba',4,'Jazz'),(74,8,'Mamed',0,'Jazz'),(75,9,'Paracelse',16,'Jazz'),(76,10,'Tristan',88,'Jazz'),(77,11,'Yasmine',39,'Jazz'),(78,1,'Aristide',139,'Electronic'),(79,2,'Celine',129,'Electronic'),(80,3,'Emily',89,'Electronic'),(81,4,'Florent',56,'Electronic'),(82,5,'Jerome',4,'Electronic'),(83,6,'Johnny',143,'Electronic'),(84,7,'Juba',77,'Electronic'),(85,8,'Mamed',26,'Electronic'),(86,9,'Paracelse',11,'Electronic'),(87,10,'Tristan',61,'Electronic'),(88,11,'Yasmine',46,'Electronic'),(89,1,'Aristide',88,'Latin'),(90,2,'Celine',69,'Latin'),(91,3,'Emily',91,'Latin'),(92,4,'Florent',72,'Latin'),(93,5,'Jerome',145,'Latin'),(94,6,'Johnny',141,'Latin'),(95,7,'Juba',111,'Latin'),(96,8,'Mamed',44,'Latin'),(97,9,'Paracelse',118,'Latin'),(98,10,'Tristan',130,'Latin'),(99,11,'Yasmine',37,'Latin'),(100,1,'Aristide',139,'World'),(101,2,'Celine',121,'World'),(102,3,'Emily',66,'World'),(103,4,'Florent',9,'World'),(104,5,'Jerome',46,'World'),(105,6,'Johnny',7,'World'),(106,7,'Juba',96,'World'),(107,8,'Mamed',81,'World'),(108,9,'Paracelse',134,'World'),(109,10,'Tristan',138,'World'),(110,11,'Yasmine',121,'World'),(111,1,'Aristide',123,'Reggae'),(112,2,'Celine',77,'Reggae'),(113,3,'Emily',61,'Reggae'),(114,4,'Florent',6,'Reggae'),(115,5,'Jerome',13,'Reggae'),(116,6,'Johnny',100,'Reggae'),(117,7,'Juba',81,'Reggae'),(118,8,'Mamed',106,'Reggae'),(119,9,'Paracelse',14,'Reggae'),(120,10,'Tristan',17,'Reggae'),(121,11,'Yasmine',118,'Reggae'),(122,1,'Aristide',141,'Classical'),(123,2,'Celine',23,'Classical'),(124,3,'Emily',83,'Classical'),(125,4,'Florent',86,'Classical'),(126,5,'Jerome',21,'Classical'),(127,6,'Johnny',148,'Classical'),(128,7,'Juba',29,'Classical'),(129,8,'Mamed',98,'Classical'),(130,9,'Paracelse',63,'Classical'),(131,10,'Tristan',125,'Classical'),(132,11,'Yasmine',126,'Classical'),(133,1,'Aristide',3,'Oldies'),(134,2,'Celine',30,'Oldies'),(135,3,'Emily',67,'Oldies'),(136,4,'Florent',62,'Oldies'),(137,5,'Jerome',60,'Oldies'),(138,6,'Johnny',47,'Oldies'),(139,7,'Juba',71,'Oldies'),(140,8,'Mamed',24,'Oldies'),(141,9,'Paracelse',132,'Oldies'),(142,10,'Tristan',35,'Oldies'),(143,11,'Yasmine',97,'Oldies'),(144,1,'Aristide',77,'New Age'),(145,2,'Celine',135,'New Age'),(146,3,'Emily',125,'New Age'),(147,4,'Florent',49,'New Age'),(148,5,'Jerome',30,'New Age'),(149,6,'Johnny',60,'New Age'),(150,7,'Juba',9,'New Age'),(151,8,'Mamed',142,'New Age'),(152,9,'Paracelse',67,'New Age'),(153,10,'Tristan',75,'New Age'),(154,11,'Yasmine',89,'New Age'),(155,1,'Aristide',114,'Christian/Gospel'),(156,2,'Celine',11,'Christian/Gospel'),(157,3,'Emily',118,'Christian/Gospel'),(158,4,'Florent',100,'Christian/Gospel'),(159,5,'Jerome',105,'Christian/Gospel'),(160,6,'Johnny',116,'Christian/Gospel'),(161,7,'Juba',4,'Christian/Gospel'),(162,8,'Mamed',99,'Christian/Gospel'),(163,9,'Paracelse',89,'Christian/Gospel'),(164,10,'Tristan',141,'Christian/Gospel'),(165,11,'Yasmine',78,'Christian/Gospel'),(166,1,'Aristide',62,'Blues'),(167,2,'Celine',54,'Blues'),(168,3,'Emily',15,'Blues'),(169,4,'Florent',116,'Blues'),(170,5,'Jerome',87,'Blues'),(171,6,'Johnny',96,'Blues'),(172,7,'Juba',108,'Blues'),(173,8,'Mamed',130,'Blues'),(174,9,'Paracelse',66,'Blues'),(175,10,'Tristan',46,'Blues'),(176,11,'Yasmine',30,'Blues'),(177,1,'Aristide',17,'Folk'),(178,2,'Celine',149,'Folk'),(179,3,'Emily',12,'Folk'),(180,4,'Florent',137,'Folk'),(181,5,'Jerome',4,'Folk'),(182,6,'Johnny',34,'Folk'),(183,7,'Juba',57,'Folk'),(184,8,'Mamed',7,'Folk'),(185,9,'Paracelse',135,'Folk'),(186,10,'Tristan',85,'Folk'),(187,11,'Yasmine',0,'Folk'),(188,1,'Aristide',43,'Vocal/Easy Listening'),(189,2,'Celine',91,'Vocal/Easy Listening'),(190,3,'Emily',57,'Vocal/Easy Listening'),(191,4,'Florent',0,'Vocal/Easy Listening'),(192,5,'Jerome',102,'Vocal/Easy Listening'),(193,6,'Johnny',75,'Vocal/Easy Listening'),(194,7,'Juba',133,'Vocal/Easy Listening'),(195,8,'Mamed',21,'Vocal/Easy Listening'),(196,9,'Paracelse',120,'Vocal/Easy Listening'),(197,10,'Tristan',8,'Vocal/Easy Listening'),(198,11,'Yasmine',37,'Vocal/Easy Listening'),(199,1,'Aristide',50,'Metal'),(200,2,'Celine',19,'Metal'),(201,3,'Emily',29,'Metal'),(202,4,'Florent',147,'Metal'),(203,5,'Jerome',114,'Metal'),(204,6,'Johnny',53,'Metal'),(205,7,'Juba',136,'Metal'),(206,8,'Mamed',127,'Metal'),(207,9,'Paracelse',100,'Metal'),(208,10,'Tristan',29,'Metal'),(209,11,'Yasmine',115,'Metal'),(210,1,'Aristide',128,'Soundtracks'),(211,2,'Celine',139,'Soundtracks'),(212,3,'Emily',49,'Soundtracks'),(213,4,'Florent',131,'Soundtracks'),(214,5,'Jerome',101,'Soundtracks'),(215,6,'Johnny',43,'Soundtracks'),(216,7,'Juba',34,'Soundtracks'),(217,8,'Mamed',97,'Soundtracks'),(218,9,'Paracelse',124,'Soundtracks'),(219,10,'Tristan',12,'Soundtracks'),(220,11,'Yasmine',7,'Soundtracks'),(221,1,'Aristide',36,'Children'),(222,2,'Celine',119,'Children'),(223,3,'Emily',146,'Children'),(224,4,'Florent',115,'Children'),(225,5,'Jerome',13,'Children'),(226,6,'Johnny',51,'Children'),(227,7,'Juba',26,'Children'),(228,8,'Mamed',10,'Children'),(229,9,'Paracelse',53,'Children'),(230,10,'Tristan',76,'Children'),(231,11,'Yasmine',96,'Children'),(232,1,'Aristide',41,'Survival'),(233,2,'Celine',25,'Survival'),(234,3,'Emily',68,'Survival'),(235,4,'Florent',46,'Survival'),(236,5,'Jerome',101,'Survival'),(237,6,'Johnny',45,'Survival'),(238,7,'Juba',148,'Survival'),(239,8,'Mamed',122,'Survival'),(240,9,'Paracelse',129,'Survival'),(241,10,'Tristan',89,'Survival'),(242,11,'Yasmine',132,'Survival'),(243,12,'Sebastien',103,'Pop');
 /*!40000 ALTER TABLE `score` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `user`
---
-
-DROP TABLE IF EXISTS `user`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user` (
-  `username` varchar(16) NOT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `password` varchar(32) NOT NULL,
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `user`
---
-
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -97,14 +72,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(16) NOT NULL,
   `password` varchar(255) NOT NULL,
   `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -113,7 +88,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'pinto','coco','2020-05-11 14:48:41'),(2,'seb','toto','2020-05-11 14:48:41'),(3,'clrko','roro','2020-05-11 14:48:41'),(4,'test','$2b$10$a2cN5p.UKg/rBtfrTVMx9esxoj8q/9kfk26o1quJqBHenYUuqtaEy','2020-05-12 12:29:30'),(5,'test1','$2b$10$0jKxtoj4kMsG7WYkO7Uev.V4hqf/NfuSn6vNUsKp3U7Y5h0jovuQi','2020-05-12 12:33:10'),(6,'test3','$2b$10$dC67hTP3fck8KDvtHEF/2uOf3z3Z.9FmGALoBMFDWrxoHF4XvQpWK','2020-05-12 12:37:51'),(7,'test3','$2b$10$rWusQ7WQifF3MfGjasIp1.86rrcV8do0GkGPbsFyKmU9N6lGMfQK.','2020-05-12 12:39:18'),(8,'clrko','$2b$10$d7U7IetAvm.m5JUkVMAP6ueNIIvA9UwX3Ch3NKwrpVMzk.1aOMc3C','2020-05-12 12:42:38'),(9,'clrko','$2b$10$x15eV.axTKQwr0pesOWa6OthaluPXoRwhwrg7.1x3VcFgDujkphsq','2020-05-12 12:43:04'),(10,'clrko','$2b$10$.UREVRGTzvBO9f0Fa7Oz8.zLdcqaSsjh.6V8LF.jot93U5j7FPpCm','2020-05-12 12:43:18'),(11,'clrko','$2b$10$X60uO8gqtRb/s2vaIXg3x.IyXacSG4A8oBvlD.HGzjQdsMgvx/ASy','2020-05-12 12:43:50'),(12,'clrko','$2b$10$.bOX55XkoBq29WgSvgdCsu/6YERrJauE.yNNU5LdJpDoXy2ohwd2a','2020-05-12 12:44:11'),(13,'erfger','$2b$10$DYsP7To710hddQXFJDGmFOmrU/TnbRRvaJUeWfnmn1FoH8jPBXNc2','2020-05-12 12:44:39'),(14,'titi','$2b$10$bNmxIm0syD5b.hz8EDidsucYC6A2WEMbUItchN9Q7iSA4z.j6c5sm','2020-05-12 13:24:42'),(15,'tutu','$2b$10$Q8ZGS36g.bRzbK2DuUvX0.10kTr0/xAKqrY3Hy6nZ1VZ1eikmH2de','2020-05-12 13:30:19');
+INSERT INTO `users` VALUES (1,'Aristide','$2b$10$kkoeI1tqcMWFZgdj63phFOdMjUhgePcO4G4fFKVpQZbJEOL3ogoQK','2020-05-14 21:26:48'),(2,'Celine','$2b$10$O/csNX7hHlyolX9ODo8N/OB9cezwz1c3lB7SvKFb5.yYmczv7MUnu','2020-05-14 21:28:56'),(3,'Emily','$2b$10$uStjY7nLdyVaEtJSIRbwR.T.FaH2/379m6BatpWWqyzZEvVSoo5la','2020-05-14 21:29:31'),(4,'Florent','$2b$10$Js1ERFvXZuWLkbX2raTfoum7eTnwj.EDO.8FkdQgr40rmuJ4WkoWO','2020-05-14 21:29:44'),(5,'Jerome','$2b$10$DnknssMse9E3Rav8Z6VqHuWWLv7nVO9E7JPjNK6/9bumsHKJq/fkG','2020-05-14 21:29:56'),(6,'johnny','$2b$10$FzNWKWGL2StEJo7ih9SSzukNOxjfkWepPBlTBUefa9Zzli6HSdxSK','2020-05-14 21:30:16'),(7,'Juba','$2b$10$gyJ/.Y3SOJhepV1cnhS4VeBHbvQEm5U5cf5aAPp3vH445URQwSaSK','2020-05-14 21:30:33'),(8,'Mamed','$2b$10$EiLFUExAOSbrKMkBqHJuReJRowWXvcm3z2w53EKhcek8nhFlmfeiW','2020-05-14 21:30:46'),(9,'Paracelse','$2b$10$lKpA79tbfUaMNSi2c3mQEOFXNB12HQQoGIM/yjJqC7OwwUZwuuKFC','2020-05-14 21:31:10'),(10,'Tristan','$2b$10$R8sYgcAFN4jS/MrDio7V1eE6cuBv7JdDOp42rdb/RxTPdhSKKBD5W','2020-05-14 21:31:23'),(11,'Yasmine','$2b$10$X1BenZBkVbxgdyYlgrByB.GxHbWeTEJrfQVI6tU2vZejy39wsZiY6','2020-05-14 21:31:39'),(12,'Sebastien','$2b$10$Q0MmAuNYAdkkK4w7ZbDGl.4Gq0n/eCCWS3wwIQGIF2/rzH8EUuWkG','2020-05-14 21:46:05');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -126,4 +101,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-14  1:22:39
+-- Dump completed on 2020-05-15  0:25:35
