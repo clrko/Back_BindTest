@@ -5,10 +5,6 @@ const connection = require("../helper/db.js")
 
 const Router = express.Router()
 
-Router.get("/", (req, res) => {
-    res.send("je suis dans la route /register")
-})
-
 Router.post("/new_user", (req, res) => {
 
     const sql = "SELECT (username) FROM users WHERE username = ?"
@@ -18,7 +14,6 @@ Router.post("/new_user", (req, res) => {
 
     connection.query(sql, values, (err, result) => {
         if (err) throw err;
-
         if (result.length === 0 ) {
             const saltRounds = 10;
             const myPlaintextPassword = req.body.password;
@@ -40,7 +35,6 @@ Router.post("/new_user", (req, res) => {
             return res.status(200).send("The username already exists.")
         }
     })
-
 })
 
 module.exports = Router

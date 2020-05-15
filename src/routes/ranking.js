@@ -6,10 +6,6 @@ const jwtSecret = require("../../jwtSecret.js")
 
 const Router = express.Router()
 
-Router.get("/", (req, res) => {
-    res.send("je suis dans la route /ranking")
-})
-
 Router.get("/allscores", (req, res) => {
     const token = req.headers['x-access-token']
     const tokenData = jwt.verify(token, jwtSecret, (err, decoded) => {
@@ -32,7 +28,6 @@ Router.get("/standard", (req, res) => {
 })
 
 Router.get("/standard/:genre", (req, res) => {
-    console.log("REQ PARAMS", req.params.genre)
     const genre = req.params.genre
     const sql = "SELECT * FROM score WHERE genre = ?"
     const values = [genre]
@@ -58,8 +53,6 @@ Router.put("/updateScore/:id", (req, res) => {
 })
 
 Router.post("/addScore", (req, res) => {
-    console.log("req.body", req.body)
-
     const token = req.headers['x-access-token']
     const tokenData = jwt.verify(token, jwtSecret, (err, decoded) => {
         if (err) throw err;
