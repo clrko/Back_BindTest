@@ -2,6 +2,7 @@
 
 jwtSecret.js
 src/helper/dbCredentials.js
+src/helper/apiKeySecret.js
 
 # dependencies
 /node_modules
