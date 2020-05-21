@@ -20,6 +20,7 @@ app.use("/favorite", favorite)
 app.use("/ranking", ranking)
 app.use("/register", register)
 
-app.listen("4242", console.log("http://localhost:4242"))
+const port = process.env.PORT || 4242
+app.listen(port, () => console.log('server started on port', port))
 
 

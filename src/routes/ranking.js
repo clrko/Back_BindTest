@@ -28,7 +28,7 @@ Router.get("/standard", (req, res) => {
 })
 
 Router.get("/standard/:genre", (req, res) => {
-    const genre = req.params.genre
+    const genre = req.params.genre.replace(/%20/g, ' ').replace(/%2F/g, '/')
     const sql = "SELECT * FROM score WHERE genre = ?"
     const values = [genre]
     connection.query(sql, values, (err, result) => {
@@ -38,8 +38,6 @@ Router.get("/standard/:genre", (req, res) => {
 })
 
 Router.put("/updateScore/:id", (req, res) => {
-    console.log("body", req.body)
-    console.log("params", req.params)
     const id = req.params.id
     const sql = `UPDATE score SET score = ? WHERE id = ?`
     const values = [
@@ -61,7 +59,7 @@ Router.post("/addScore", (req, res) => {
             decoded.id,
             req.body.username,
             req.body.score,
-            req.body.genre,
+            req.body.genre.replace(/%20/g, ' ').replace(/%2F/g, '/'),
         ]
         connection.query(sql, values, (err, result) => {
             if (err) throw err
