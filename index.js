@@ -20,10 +20,6 @@ app.use("/favorite", favorite)
 app.use("/ranking", ranking)
 app.use("/register", register)
 
-app.get("/", (req, res) => {
-    res.send("je suis dans le /")
-})
-
 app.listen("4242", console.log("http://localhost:4242"))
 
 
