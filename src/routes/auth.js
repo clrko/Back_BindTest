@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken")
 const bcrypt = require('bcrypt')
 
 const connection = require("../helper/db.js")
-const jwtSecret = require("../../jwtSecret.js")
+const jwtSecret = process.env.JWT_SECRET || require("../../jwtSecret.js")
 
 const Router = express.Router()
 
