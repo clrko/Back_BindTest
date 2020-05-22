@@ -3,8 +3,4 @@ const dbCredentials = process.env.CLEARDB_DATABASE_URL || require("./dbCredentia
 
 const connection = mysql.createPool(dbCredentials)
 
-connection.connect(err => {
-    if (err) throw err
-})
-
 module.exports = connection 
