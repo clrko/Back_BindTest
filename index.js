@@ -11,7 +11,7 @@ const register = require("./src/routes/register")
 const app = express()
 
 const corsOptions = {
-    origin: 'https://wild-thunder.netlify.app/',
+    origin: 'https://wild-thunder.netlify.app',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
