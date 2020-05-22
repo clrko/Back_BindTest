@@ -7,7 +7,7 @@ const Router = express.Router()
 
 Router.post("/new_user", (req, res) => {
 
-    const sql = "SELECT (username) FROM users WHERE username = ?"
+    const sql = "SELECT username FROM users WHERE username = ?"
     const values = [
         req.body.username,
     ]

@@ -11,7 +11,7 @@ Router.get("/", (req, res) => {
     const token = req.headers['x-access-token']
     const tokenData = jwt.verify(token, jwtSecret, (err, decoded) => {
         if (err) throw err
-        const sql = "SELECT (username) FROM users WHERE id = ?"
+        const sql = "SELECT username FROM users WHERE id = ?"
         const values = [decoded.id]
         
         connection.query(sql, values, (err, result) => {
@@ -29,6 +29,10 @@ Router.post("/login",(req, res) => {
 
     connection.query(sql, values, (err, result) => {
         if (err) throw err;
+
+        if (result.length === 0) {
+            return res.status(200).send("The password or username is wrong")
+        }
 
         const myPlaintextPassword = req.body.password;
         const id = result[0].id;
